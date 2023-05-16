@@ -1,0 +1,23 @@
+.product-listing{
+    text-align: center;
+}
+
+.product-listing .product-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+
+.product-listing .flex-container-1{
+    display: flex;
+    text-align: left;
+}
+
+.product-listing .flex-container-2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-listing .filters{
+    width: 600px;
+}
