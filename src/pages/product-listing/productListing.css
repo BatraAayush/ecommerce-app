@@ -13,11 +13,18 @@
     text-align: left;
 }
 
-.product-listing .flex-container-2{
-    display: flex;
-    justify-content: space-between;
+.product-listing .clear-button{
+    border: none;
+    background: none;
+    cursor:pointer;
+
+}
+
+.product-listing .filter-heading{
+    display: inline-block;
+    margin-right: 2rem;
 }
 
 .product-listing .filters{
-    width: 600px;
+    min-width: 150px;
 }

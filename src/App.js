@@ -6,11 +6,14 @@ import { Wishlist } from "./pages/wishlist/Wishlist";
 import { Login } from "./pages/login/Login";
 import { ProductListing } from "./pages/product-listing/ProductsListing";
 import Mockman from "mockman-js";
+import { Navigation } from "./components/navigation/Navigation";
+import { Footer } from "./components/footer/Footer";
 
 
 function App() {
   return (
     <div className="App">
+      <Navigation/>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/products" element={<ProductListing/>}/>
@@ -19,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/mockman" element={<Mockman/>}/>
       </Routes>
+    <Footer/>
     </div>
   );
 }
