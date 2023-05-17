@@ -133,7 +133,6 @@ export const DataProvider = ({ children }) => {
             });
         }
         if (state.sortPriceFilter !== "") {
-            console.log("here inside");
             if (state.sortPriceFilter === "asc") {
                 filteredData.sort(
                     (a, b) => a.discountedPrice - b.discountedPrice
@@ -145,13 +144,13 @@ export const DataProvider = ({ children }) => {
                 );
             }
         }
-        console.log("here");
         return filteredData;
     };
 
     return (
         <DataContext.Provider
             value={{
+                products: state.products,
                 filteredProducts: getFilteredData(),
                 trendingProducts: state.products.filter(
                     ({ trending }) => trending

@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import "./navigation.css";
 import { useDataContext } from "../../contexts/DataProvider";
+import { useLoginContext } from "../../contexts/LoginProvider";
 
 export const Navigation = () => {
+    const {login, userName} = useLoginContext();
     const { searchHandler, getAllDataHandler } = useDataContext();
     return (
         <div className="nav-bar">
@@ -19,7 +21,8 @@ export const Navigation = () => {
             <NavLink onClick={getAllDataHandler} to={"/products"}>Products</NavLink>||
             <NavLink to={"/cart"}>Cart</NavLink>||
             <NavLink to={"/wishlist"}>Wishlist</NavLink>||
-            <NavLink to={"/login"}>Login</NavLink>
+            <NavLink to={"/login"}>Login</NavLink>&emsp;
+            {login && <strong>Hello {userName}</strong>}
         </div>
     );
 };

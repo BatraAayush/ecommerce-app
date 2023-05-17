@@ -1,0 +1,15 @@
+.product-details{
+    display: flex;
+    gap: 2rem;
+}
+
+.product-details .details{
+    flex-grow: 9;
+}
+
+.product-details img{
+    width: 300px;
+    height: 300px;
+    flex-grow: 1;
+    margin-right: 10rem;
+}
