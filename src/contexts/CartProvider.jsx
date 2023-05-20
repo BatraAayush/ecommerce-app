@@ -1,11 +1,13 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { json } from "react-router";
 
 const CartContext = createContext();
 const reducerFunction = (state, action) => {
     switch (action.type) {
         case "setCart": {
             return { ...state, cart: action.payload };
+        }
+        case "setWishlist": {
+            return { ...state, wishlist: action.payload };
         }
         default: {
             return { ...state };
@@ -16,8 +18,10 @@ const reducerFunction = (state, action) => {
 export const CartProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducerFunction, {
         cart: [],
+        wishlist: [],
     });
-    const fetchData = async () => {
+    console.log(state);
+    const fetchCartData = async () => {
         try {
             const res = await fetch("/api/user/cart", {
                 method: "GET",
@@ -33,8 +37,28 @@ export const CartProvider = ({ children }) => {
             console.log(e);
         }
     };
+
+    const fetchWishlistData = async () => {
+        try {
+            const res = await fetch("/api/user/wishlist", {
+                method: "GET",
+                headers: {
+                    authorization: `${localStorage.getItem("encodedToken")}`,
+                },
+            });
+            if (res.status === 200) {
+                const { wishlist } = await res.json();
+                console.log(wishlist);
+                dispatch({ type: "setWishlist", payload: wishlist });
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
     useEffect(() => {
-        fetchData();
+        fetchCartData();
+        fetchWishlistData();
     }, []);
     const addToCartHandler = async (product) => {
         try {
@@ -54,8 +78,12 @@ export const CartProvider = ({ children }) => {
         }
     };
 
-    const isItemPresentHandler = (product) => {
+    const isItemPresentInCartHandler = (product) => {
         return state.cart.find(({ _id }) => product._id === _id);
+    };
+
+    const isItemPresentinWishlistHandler = (product) => {
+        return state.wishlist.find(({ _id }) => product._id === _id);
     };
 
     const incQtyHandler = async (id) => {
@@ -80,7 +108,7 @@ export const CartProvider = ({ children }) => {
             console.log(e);
         }
     };
-    const decQtyHandler = async(id) => {
+    const decQtyHandler = async (id) => {
         try {
             const bodySent = {
                 action: {
@@ -102,14 +130,72 @@ export const CartProvider = ({ children }) => {
             console.log(e);
         }
     };
+
+    const removeFromCartHandler = async (id) => {
+        try {
+            const res = await fetch(`/api/user/cart/${id}`, {
+                method: "DELETE",
+                headers: {
+                    authorization: `${localStorage.getItem("encodedToken")}`,
+                },
+            });
+            if (res.status === 200) {
+                const { cart } = await res.json();
+                dispatch({ type: "setCart", payload: cart });
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    const removeFromWishlistHandler = async (id) => {
+        try {
+            const res = await fetch(`/api/user/wishlist/${id}`, {
+                method: "DELETE",
+                headers: {
+                    authorization: `${localStorage.getItem("encodedToken")}`,
+                },
+            });
+            if (res.status === 200) {
+                const { wishlist } = await res.json();
+                dispatch({ type: "setWishlist", payload: wishlist });
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    const addToWishlistHandler = async (product) => {
+        console.log("here")
+        try {
+            const res = await fetch("/api/user/wishlist", {
+                method: "POST",
+                headers: {
+                    authorization: `${localStorage.getItem("encodedToken")}`,
+                },
+                body: JSON.stringify({ product }),
+            });
+            if (res.status === 201) {
+                const { wishlist } = await res.json();
+                dispatch({ type: "setWishlist", payload: wishlist });
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    };
     return (
         <CartContext.Provider
             value={{
                 cart: state.cart,
                 addToCartHandler,
-                isItemPresentHandler,
+                isItemPresentInCartHandler,
                 incQtyHandler,
                 decQtyHandler,
+                removeFromCartHandler,
+                wishlist: state.wishlist,
+                addToWishlistHandler,
+                isItemPresentinWishlistHandler,
+                removeFromWishlistHandler
             }}
         >
             {children}

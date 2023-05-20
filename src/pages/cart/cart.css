@@ -1,11 +1,10 @@
 .cart{
     display: flex;
+    padding-bottom: 2.5rem;
 }
 
 .cart .cart-list{
-    display: flex;
-    flex-direction: column;
-    margin-right: 4rem;
+    width: 70%;
 }
 
 .cart .bill{
@@ -13,14 +12,13 @@
 
 .cart .cart-item{
     display: flex;
-    border: 2px solid;
-    margin-bottom: .5rem;
+    flex-direction: row;
     padding: 1rem;
 }
 
 .cart .cart-item img{
     width: 200px;
-    margin-right: 50px;
+    margin-right: 5rem;
 }
 
 .cart .price{

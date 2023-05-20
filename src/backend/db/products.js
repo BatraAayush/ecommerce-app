@@ -33,7 +33,7 @@ export const products = [
         productImage:
             "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTFWbWBz9gaIoOirZIwvBcUbjj0vJf4dvFdCn5g6_JVbbpvA4CiXkUzUB1DfE5O55VvbR-nUsG0wQbXJZoimnjZyVH2r9sSKk9vxhqC6_-Fgrn9IjtbxIgXOQ&usqp=CAE",
         gender: "Men",
-        color: "Grey",
+        color: "Black",
         size: "10",
         categoryName: "Running",
         price: 180,
@@ -70,7 +70,7 @@ export const products = [
         productImage:
             "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQcdGbzouL8QPvywx0MbSwFj7kyct_P3bL-3UyJM4BsW2lCUDADJwtQW9_3bQnb6dj7j7L5RRXiJK-p3av3vL2CYHuiCX4C3CXJptnaHEiGfCRGuJJ8vG-PLw&usqp=CAE",
         gender: "Women",
-        color: "Green",
+        color: "White/Green",
         size: "7",
         categoryName: "Casual",
         price: 80,
@@ -88,7 +88,7 @@ export const products = [
         productImage:
             "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQi1sBGJ8NFh7tBo2EiM-3A8yhuxWxHMQxckwC7haSIq4IfksV5DPT-vHG4_xCDLWA2PAtmHTSDbJLVuudXLERAfwXQlf8yxS_TkpBbS5XCOD6o-GC_lafNJQ&usqp=CAE",
         gender: "Unisex",
-        color: "Navy",
+        color: "Grey",
         size: "8.5",
         categoryName: "Running",
         price: 150,
@@ -106,7 +106,7 @@ export const products = [
         productImage:
             "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQUiYdfqnj02d28CSilovRvbna249TxDTls8_aHl9M17D2UnIACR6AmbXrB_eVEHmdcOQELoB2iH0gv0seTAovPpHMeepIkgWktzb5CSVl7O9KDe-9KKXslWA&usqp=CAE",
         gender: "Unisex",
-        color: "Black",
+        color: "Blue",
         size: "6",
         categoryName: "Sneakers",
         price: 60,
@@ -124,7 +124,7 @@ export const products = [
         productImage:
             "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1350,h_1350/global/369579/11/sv01/fnd/IND/fmt/png/RS-X-Reinvention-Unisex-Sneakers",
         gender: "Men",
-        color: "Red/Black",
+        color: "White",
         size: "10.5",
         categoryName: "Sneakers",
         price: 120,
