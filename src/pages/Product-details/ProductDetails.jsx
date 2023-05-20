@@ -1,11 +1,17 @@
 import { useParams } from "react-router";
 import { useDataContext } from "../../contexts/DataProvider";
 import "./ProductDetails.css";
+import { Link } from "react-router-dom";
+import { useCartContext } from "../../contexts/CartProvider";
+import { useLoginContext } from "../../contexts/LoginProvider";
 
 export const ProductDetails = () => {
     const { products } = useDataContext();
     const { productId } = useParams();
+    const {addToCartHandler, isItemPresentHandler } = useCartContext;
+    const {login} = useLoginContext();
     let product = {};
+    let counter = 0;
     product = products.find(({ _id }) => {
         return _id === productId;
     });
@@ -62,7 +68,24 @@ export const ProductDetails = () => {
                     <strong>{outOfStock ? "Out of Stock" : ""}</strong>{" "}
                     <strong>{trending ? "Trending" : ""}</strong>{" "}
                 </p>
-                <button>Add to Cart</button>
+                {!(product) ? (
+                    <button
+                        onClick={() => {
+                            if (login) {
+                                counter++;
+                                if (counter === 1) {
+                                    return addToCartHandler(product);
+                                }
+                            } else {
+                                return alert("please Login First");
+                            }
+                        }}
+                    >
+                        Add to cart
+                    </button>
+                ) : (
+                    <Link to={"/cart"}>Go to Cart</Link>
+                )}{" "}
                 <button>Add To Wishlist</button>
             </div>
         </div>
