@@ -20,7 +20,6 @@ export const CartProvider = ({ children }) => {
         cart: [],
         wishlist: [],
     });
-    console.log(state);
     const fetchCartData = async () => {
         try {
             const res = await fetch("/api/user/cart", {
@@ -48,7 +47,6 @@ export const CartProvider = ({ children }) => {
             });
             if (res.status === 200) {
                 const { wishlist } = await res.json();
-                console.log(wishlist);
                 dispatch({ type: "setWishlist", payload: wishlist });
             }
         } catch (e) {
@@ -166,7 +164,6 @@ export const CartProvider = ({ children }) => {
     };
 
     const addToWishlistHandler = async (product) => {
-        console.log("here")
         try {
             const res = await fetch("/api/user/wishlist", {
                 method: "POST",
@@ -183,6 +180,18 @@ export const CartProvider = ({ children }) => {
             console.log(e);
         }
     };
+    const items = state.cart.reduce((acc, { qty }) => acc + qty, 0);
+    const totalPrice = state.cart.reduce(
+        (acc, { price, qty }) => acc + price * qty,
+        0
+    );
+    const totalDiscount = state.cart.reduce(
+        (acc, { price, discountedPrice, qty }) =>
+            acc + (price - discountedPrice) * qty,
+        0
+    );
+    const netPrice = totalPrice - totalDiscount;
+
     return (
         <CartContext.Provider
             value={{
@@ -195,7 +204,11 @@ export const CartProvider = ({ children }) => {
                 wishlist: state.wishlist,
                 addToWishlistHandler,
                 isItemPresentinWishlistHandler,
-                removeFromWishlistHandler
+                removeFromWishlistHandler,
+                items,
+                totalPrice,
+                totalDiscount,
+                netPrice,
             }}
         >
             {children}

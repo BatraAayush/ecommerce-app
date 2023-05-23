@@ -47,7 +47,12 @@ const reducerFunction = (state, action) => {
                 sortPriceFilter: "",
             };
         }
-
+        case "setProductsLoading": {
+            return { ...state, productsLoading: action.payload };
+        }
+        case "setCategoriesLoading": {
+            return { ...state, categoriesLoading: action.payload };
+        }
         default:
             return state;
     }
@@ -63,20 +68,34 @@ export const DataProvider = ({ children }) => {
         priceFilter: "",
         ratingFilter: "",
         sortPriceFilter: "",
+        productsLoading: true,
+        categoriesLoading: true,
     });
     const fetchProducts = async () => {
-        const res = await fetch("/api/products");
-        if (res.status === 200) {
-            const { products } = await res.json();
-            dispatch({ type: "setProducts", payload: products });
+        try {
+            const res = await fetch("/api/products");
+            if (res.status === 200) {
+                const { products } = await res.json();
+                dispatch({ type: "setProducts", payload: products });
+            }
+        } catch (e) {
+            console.log(e);
+        } finally {
+            dispatch({ type: "setProductsLoading", payload: false });
         }
     };
 
     const fetchCategories = async () => {
-        const res = await fetch("/api/categories");
-        if (res.status === 200) {
-            const { categories } = await res.json();
-            dispatch({ type: "setCategories", payload: categories });
+        try {
+            const res = await fetch("/api/categories");
+            if (res.status === 200) {
+                const { categories } = await res.json();
+                dispatch({ type: "setCategories", payload: categories });
+            }
+        } catch (e) {
+            console.log(e);
+        } finally {
+            dispatch({ type: "setCategoriesLoading", payload: false });
         }
     };
 
@@ -167,6 +186,8 @@ export const DataProvider = ({ children }) => {
                 categoryFilter: state.categoryFilter,
                 sortPriceHandler,
                 sortPriceFilter: state.sortPriceFilter,
+                productsLoading: state.productsLoading,
+                categoriesLoading: state.categoriesLoading,
             }}
         >
             {children}

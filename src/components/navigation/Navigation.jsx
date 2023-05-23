@@ -21,7 +21,7 @@ export const Navigation = () => {
             <NavLink onClick={getAllDataHandler} to={"/products"}>Products</NavLink>||
             <NavLink to={"/cart"}>Cart</NavLink>||
             <NavLink to={"/wishlist"}>Wishlist</NavLink>||
-            <NavLink to={"/login"}>Login</NavLink>&emsp;
+            <NavLink to={"/login"}>{login ? "Logout" : "Login"}</NavLink>&emsp;
             {login && <strong>Hello {userName}</strong>}
         </div>
     );

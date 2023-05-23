@@ -15,9 +15,9 @@ export const ProductListing = () => {
         categoryFilter,
         sortPriceHandler,
         sortPriceFilter,
+        productsLoading
     } = useDataContext();
-    return (
-        <div className="product-listing">
+    return productsLoading ? <h1>Loading...</h1> : <div className="product-listing">
             <div className="flex-container-1">
                 <div className="filters">
                     <div>
@@ -88,5 +88,5 @@ export const ProductListing = () => {
                 </ul>
             </div>
         </div>
-    );
+
 };

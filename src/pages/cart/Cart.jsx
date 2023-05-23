@@ -1,21 +1,21 @@
+import { Link } from "react-router-dom";
 import { AddToWishlistButton } from "../../components/AddtoWishlistButton";
 import { useCartContext } from "../../contexts/CartProvider";
 import "./cart.css";
+import { toast } from "react-toastify";
 
 export const Cart = () => {
-    const { cart, incQtyHandler, decQtyHandler, removeFromCartHandler } =
-        useCartContext();
-    const items = cart.reduce((acc, { qty }) => acc + qty, 0);
-    const totalPrice = cart.reduce(
-        (acc, { price, qty }) => acc + price * qty,
-        0
-    );
-    const totalDiscount = cart.reduce(
-        (acc, { price, discountedPrice, qty }) =>
-            acc + (price - discountedPrice) * qty,
-        0
-    );
-    const netPrice = totalPrice - totalDiscount;
+    const {
+        cart,
+        incQtyHandler,
+        decQtyHandler,
+        removeFromCartHandler,
+        items,
+        totalPrice,
+        totalDiscount,
+        netPrice,
+    } = useCartContext();
+    const removedNotify = () => toast("Removed from Cart");
 
     return cart.length === 0 ? (
         <h1>Your Cart is Empty</h1>
@@ -59,13 +59,16 @@ export const Cart = () => {
                                     </p>
                                     <p>
                                         <button
-                                            onClick={() =>
-                                                removeFromCartHandler(_id)
-                                            }
+                                            onClick={() => {
+                                                removedNotify();
+                                                removeFromCartHandler(_id);
+                                            }}
                                         >
                                             Remove from Cart
                                         </button>
-                                        <AddToWishlistButton product={product}/>
+                                        <AddToWishlistButton
+                                            product={product}
+                                        />
                                     </p>
                                 </div>
                             </div>
@@ -80,7 +83,7 @@ export const Cart = () => {
                     <p>Total Price: ${totalPrice}</p>
                     <p>Discount: ${totalDiscount}</p>
                     <p>Net Price: ${netPrice}</p>
-                    <button>Place Order</button>
+                    <Link to={"/checkout"}>Place Order</Link>
                 </div>
             </div>
         </div>

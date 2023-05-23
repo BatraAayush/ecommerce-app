@@ -1,0 +1,5 @@
+.checkout{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 4rem;
+}
