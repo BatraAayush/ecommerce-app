@@ -7,7 +7,7 @@ export const Home = () => {
     const {
         trendingProducts,
         categories,
-        categoryFilterHandler,
+        singleCategoryFilterHandler,
         getAllDataHandler,
         productsLoading,
         categoriesLoading,
@@ -15,7 +15,7 @@ export const Home = () => {
     return (
         <div className="home">
             <div className="main-card">
-                <Link onClick={getAllDataHandler} to="/products">
+                <Link to="/products">
                     Products
                 </Link>
             </div>
@@ -35,7 +35,7 @@ export const Home = () => {
                                 />
                                 <button
                                     onClick={() =>
-                                        categoryFilterHandler(categoryName)
+                                        singleCategoryFilterHandler(categoryName)
                                     }
                                 >
                                     {categoryName}

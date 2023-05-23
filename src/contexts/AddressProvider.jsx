@@ -57,7 +57,6 @@ const AddressProvider = ({ children }) => {
         pinCode: "",
         city: "",
     });
-    console.log(state);
     const setNameHandler = (e) => {
         dispatch({ type: "setNameHandler", payload: e.target.value });
     };
@@ -75,10 +74,10 @@ const AddressProvider = ({ children }) => {
     };
     const addAddressHandler = () => {
         if (
-            state.name === "" &&
-            state.mobileNo === "" &&
-            state.address === "" &&
-            state.city === "" &&
+            state.name === "" ||
+            state.mobileNo === "" ||
+            state.address === "" ||
+            state.city === "" ||
             state.pinCode === ""
         ) {
             notify();

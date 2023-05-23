@@ -43,11 +43,10 @@ export const ProductListing = () => {
                         {categories.map(({ categoryName, id }) => (
                             <li key={id}>
                                 <input
-                                    checked={categoryFilter === categoryName}
+                                    checked={categoryFilter.includes(categoryName)}
                                     value={categoryName}
                                     onChange={(e) => setCategoryHandler(e)}
-                                    name="category"
-                                    type="radio"
+                                    type="checkbox"
                                 />
                                 {categoryName}
                             </li>

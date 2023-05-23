@@ -5,7 +5,7 @@ import { useLoginContext } from "../../contexts/LoginProvider";
 
 export const Navigation = () => {
     const {login, userName} = useLoginContext();
-    const { searchHandler, getAllDataHandler } = useDataContext();
+    const { searchHandler } = useDataContext();
     return (
         <div className="nav-bar">
             <NavLink to={"/"}>
@@ -18,7 +18,7 @@ export const Navigation = () => {
                 type="text"
             />
             &emsp;
-            <NavLink onClick={getAllDataHandler} to={"/products"}>Products</NavLink>||
+            <NavLink to={"/products"}>Products</NavLink>||
             <NavLink to={"/cart"}>Cart</NavLink>||
             <NavLink to={"/wishlist"}>Wishlist</NavLink>||
             <NavLink to={"/login"}>{login ? "Logout" : "Login"}</NavLink>&emsp;

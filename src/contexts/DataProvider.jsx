@@ -15,7 +15,7 @@ const reducerFunction = (state, action) => {
         case "searchHandler": {
             return { ...state, search: action.payload };
         }
-        case "categoryFilterHandler": {
+        case "singleCategoryFilterHandler": {
             return {
                 ...state,
                 categoryFilter: action.payload,
@@ -40,7 +40,7 @@ const reducerFunction = (state, action) => {
         case "getAllDataHandler": {
             return {
                 ...state,
-                categoryFilter: "",
+                categoryFilter: [],
                 search: "",
                 priceFilter: "",
                 ratingFilter: "",
@@ -64,7 +64,7 @@ export const DataProvider = ({ children }) => {
         products: [],
         categories: [],
         search: "",
-        categoryFilter: "",
+        categoryFilter: [],
         priceFilter: "",
         ratingFilter: "",
         sortPriceFilter: "",
@@ -109,9 +109,9 @@ export const DataProvider = ({ children }) => {
         dispatch({ type: "searchHandler", payload: e.target.value });
     };
 
-    const categoryFilterHandler = (categoryName) => {
+    const singleCategoryFilterHandler = (categoryName) => {
         navigate("/products");
-        dispatch({ type: "categoryFilterHandler", payload: categoryName });
+        dispatch({ type: "singleCategoryFilterHandler", payload: [categoryName] });
     };
     const getAllDataHandler = () => {
         dispatch({ type: "getAllDataHandler" });
@@ -124,9 +124,17 @@ export const DataProvider = ({ children }) => {
         dispatch({ type: "ratingFilterHandler", payload: e.target.value });
     };
     const setCategoryHandler = (e) => {
-        dispatch({ type: "setCategoryHandler", payload: e.target.value });
+        if (state.categoryFilter.includes(e.target.value)) {
+            const newData = state.categoryFilter.filter(category => !(category === e.target.value));
+            dispatch({type:"setCategoryHandler", payload:newData});
+        } else {
+            const newData = [...state.categoryFilter];
+            newData.push(e.target.value);
+            dispatch({type:"setCategoryHandler", payload:newData});
+        }
     };
-    const sortPriceHandler = (e) => {
+    console.log(state)
+        const sortPriceHandler = (e) => {
         dispatch({ type: "sortPriceHandler", payload: e.target.value });
     };
     const getFilteredData = () => {
@@ -136,9 +144,9 @@ export const DataProvider = ({ children }) => {
                 productName.toLowerCase().includes(state.search.toLowerCase())
             );
         }
-        if (state.categoryFilter !== "") {
+        if (state.categoryFilter.length > 0) {
             filteredData = filteredData.filter(({ categoryName }) => {
-                return categoryName === state.categoryFilter;
+                return state.categoryFilter.includes(categoryName);
             });
         }
         if (state.priceFilter !== "") {
@@ -176,7 +184,7 @@ export const DataProvider = ({ children }) => {
                 ),
                 categories: state.categories,
                 searchHandler,
-                categoryFilterHandler,
+                singleCategoryFilterHandler,
                 getAllDataHandler,
                 priceFilterHandler,
                 priceRange: state.priceFilter,
