@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import { useLocation, useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const LoginContext = createContext();
 
@@ -42,6 +43,11 @@ const reducerFunction = (state, action) => {
 };
 
 export const LoginProvider = ({ children }) => {
+    const notify = () => toast("Incorrect Input");
+    const notifyLoggedIn = () => toast("Logged In Successfully");
+    const conformPasswordNotMatchedNotify = () =>
+        toast("Conform password not matched");
+    const fillAllInputNotify = () => toast("please fill all the inputs");
     const navigate = useNavigate();
     const location = useLocation();
     const [state, dispatch] = useReducer(reducerFunction, {
@@ -79,9 +85,10 @@ export const LoginProvider = ({ children }) => {
                 const { encodedToken, foundUser } = await res.json();
                 localStorage.setItem("encodedToken", encodedToken);
                 dispatch({ type: "setUserDetails", payload: foundUser });
+                notifyLoggedIn();
                 navigate(location?.state?.from?.pathname);
             } else {
-                alert("incorrect Information");
+                notify();
             }
         } catch (e) {
             console.log(e);
@@ -94,7 +101,7 @@ export const LoginProvider = ({ children }) => {
                 email: state.sEmailInput,
                 password: state.sPasswordInput,
                 firstName: state.fNInput,
-                lastName: state.lNInput
+                lastName: state.lNInput,
             };
 
             const res = await fetch("/api/auth/signup", {
@@ -102,7 +109,7 @@ export const LoginProvider = ({ children }) => {
                 body: JSON.stringify(signUpDetails),
             });
             if (res.status === 201) {
-                const {createdUser, encodedToken} = await res.json();
+                const { createdUser, encodedToken } = await res.json();
                 dispatch({ type: "setLogin" });
                 localStorage.setItem("encodedToken", encodedToken);
                 dispatch({ type: "setUserDetails", payload: createdUser });
@@ -130,11 +137,12 @@ export const LoginProvider = ({ children }) => {
             state.sEmailInput === "" ||
             state.sPasswordInput === ""
         ) {
-            alert("please fill all the inputs");
+            fillAllInputNotify();
         } else if (state.sPasswordInput !== state.conformPasswordInput) {
-            alert("Conform password not matched");
+            conformPasswordNotMatchedNotify();
         } else {
             fetchSignUpDetails();
+            notifyLoggedIn();
         }
     };
     const logOutHandler = () => {

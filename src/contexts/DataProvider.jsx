@@ -133,7 +133,6 @@ export const DataProvider = ({ children }) => {
             dispatch({type:"setCategoryHandler", payload:newData});
         }
     };
-    console.log(state)
         const sortPriceHandler = (e) => {
         dispatch({ type: "sortPriceHandler", payload: e.target.value });
     };

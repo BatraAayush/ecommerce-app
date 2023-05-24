@@ -32,7 +32,12 @@ const reducerFunction = (state, action) => {
                 }
             ] };
         }
-        
+        case "updateAddressData" : {
+            return {...state, addressData: action.payload};
+        }
+        case "showAddressBoxHandler":{
+            return {...state, showAddress: action.payload};
+        }
         default: {
             return { ...state };
         }
@@ -56,6 +61,7 @@ const AddressProvider = ({ children }) => {
         mobileNo: "",
         pinCode: "",
         city: "",
+        showAddress:false
     });
     const setNameHandler = (e) => {
         dispatch({ type: "setNameHandler", payload: e.target.value });
@@ -88,9 +94,16 @@ const AddressProvider = ({ children }) => {
             dispatch({ type: "setPinCodeHandler", payload: "" });
             dispatch({ type: "setCityHandler", payload: "" });
             dispatch({ type: "setAddressHandler", payload: "" });
-
+            dispatch({type:"showAddressBoxHandler", payload:false })
         }
     };
+    const deleteHandler = (index) => {
+        const updatedData = state.addressData.filter((address, i) => !(i === index));
+        dispatch({type:"updateAddressData", payload:updatedData});
+    }
+    const showAddressBoxHandler = (bool) => {
+        dispatch({type:"showAddressBoxHandler", payload:bool })
+    }
     return (
         <AddressContext.Provider
             value={{
@@ -105,7 +118,10 @@ const AddressProvider = ({ children }) => {
                 address: state.address,
                 mobileNo:state.mobileNo,
                 pinCode:state.pinCode,
-                city: state.city
+                city: state.city,
+                deleteHandler,
+                showAddressBoxHandler,
+                showAddress: state.showAddress
             }}
         >
             {children}

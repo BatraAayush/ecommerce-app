@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { useLoginContext } from "../../contexts/LoginProvider";
+import { useState } from "react";
 
 export const Login = () => {
+    const [show, setShow] = useState(false);
     const {
         setEmailInputHandler,
         setPasswordInputHandler,
@@ -33,10 +35,13 @@ export const Login = () => {
                     <br />
                     <input
                         onChange={(e) => setPasswordInputHandler(e)}
-                        type="password"
+                        type={show ? "text" : "password"}
                         placeholder="testuser"
                         required
                     />
+                    <button onClick={() => {
+                        show ? setShow(false) : setShow(true); 
+                    }}>{show ? "Hide Password" : "Show Password"}</button>
                     <p>
                         <input type="checkbox" />
                         Remember me <Link>Forgot your Password?</Link>

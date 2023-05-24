@@ -21,17 +21,28 @@ const Checkout = () => {
         mobileNo,
         pinCode,
         city,
+        deleteHandler,
+        showAddressBoxHandler,
+        showAddress,
     } = useAddressContext();
-    const [visible, setVisible] = useState(false);
     const [orderPlaced, setOrderPlaced] = useState(false);
 
-    const showAddress = () => {
-        setVisible(true);
-    };
     const notify = () => toast("Order Placed Successfully");
+    const fillAddressNotify = () => toast("Please select an Address");
+
+    const [selectedAddress, setSelectedAddress] = useState({});
     return orderPlaced ? (
         <div>
             <h1>Order Placed Successfully</h1>
+            <div>
+                <h2>Summary</h2>
+                <p>No of items: {items}</p>
+                <p>Total Price: ${totalPrice}</p>
+                <p>Discount: ${totalDiscount}</p>
+                <p>Delivery charges: ${deliveryCharge}</p>
+                <p>Net Price: ${netPrice + deliveryCharge}</p>
+                <h2>Address Details</h2>
+            </div>
             <Link to="/">Back To Website</Link>
         </div>
     ) : (
@@ -41,19 +52,35 @@ const Checkout = () => {
                 <ul>
                     {addressData.map((address, i) => (
                         <div key={i}>
-                            <input defaultChecked name="address" type="radio" />
+                            <input
+                                name="address"
+                                type="radio"
+                                onChange={(e) => {
+                                    if (e.target.checked) {
+                                        setSelectedAddress(address);
+                                    }
+                                }}
+                            />
+                            <button onClick={() => deleteHandler(i)}>
+                                Delete
+                            </button>
+
                             <h1>{address.name}</h1>
                             <p>{`${address.address} ${address.city} ${address.pinCode}`}</p>
                             <p>
                                 <strong>Mobile no:</strong> {address.mobileNo}
                             </p>
+                            <hr />
                         </div>
                     ))}
                 </ul>
-                <button disabled={visible} onClick={() => showAddress()}>
+                <button
+                    disabled={showAddress}
+                    onClick={() => showAddressBoxHandler(true)}
+                >
                     Add Address
                 </button>
-                {visible && (
+                {showAddress && (
                     <div>
                         <h3>Add new Address</h3>
                         <p>
@@ -104,7 +131,7 @@ const Checkout = () => {
                         >
                             Add
                         </button>
-                        <button onClick={() => setVisible(false)}>
+                        <button onClick={() => showAddressBoxHandler(false)}>
                             Cancel
                         </button>
                     </div>
@@ -121,8 +148,13 @@ const Checkout = () => {
                 <p>Net Price: ${netPrice + deliveryCharge}</p>
                 <button
                     onClick={() => {
-                        notify();
-                        setOrderPlaced(true);
+                        console.log(Object.keys(selectedAddress));
+                        if (Object.keys(selectedAddress).length === 0) {
+                            fillAddressNotify();
+                        } else {
+                            notify();
+                            setOrderPlaced(true);
+                        }
                     }}
                 >
                     Place Order

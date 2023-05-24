@@ -4,6 +4,8 @@ import { useLoginContext } from "../contexts/LoginProvider";
 import { toast } from "react-toastify";
 
 export const AddToCartButton = ({ product }) => {
+    const loginNotify = () => toast("Please Login First");
+
     const { login } = useLoginContext();
     const { isItemPresentInCartHandler, addToCartHandler } = useCartContext();
     let counter = 0;
@@ -18,7 +20,7 @@ export const AddToCartButton = ({ product }) => {
                         return addToCartHandler(product);
                     }
                 } else {
-                    return alert("please Login First");
+                    loginNotify();
                 }
             }}
         >

@@ -3,6 +3,8 @@ import { useCartContext } from "../contexts/CartProvider";
 import { useLoginContext } from "../contexts/LoginProvider";
 
 export const AddToWishlistButton = ({ product }) => {
+    const loginNotify = () => toast("Please Login First");
+
     const {
         isItemPresentinWishlistHandler,
         addToWishlistHandler,
@@ -24,7 +26,7 @@ export const AddToWishlistButton = ({ product }) => {
                         return addToWishlistHandler(product);
                     }
                 } else {
-                    return alert("please Login First");
+                    loginNotify();
                 }
             }}
         >

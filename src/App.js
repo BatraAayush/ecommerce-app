@@ -11,15 +11,12 @@ import { Navigation } from "./components/navigation/Navigation";
 import { Footer } from "./components/footer/Footer";
 import { ProductDetails } from "./pages/Product-details/ProductDetails";
 import { RequiresAuth } from "./components/RequiresAuth";
-import React from 'react';
+import React from "react";
 import Checkout from "./pages/checkout/Checkout";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-
     return (
         <div className="App">
             <Navigation />
@@ -49,11 +46,21 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/mockman" element={<Mockman />} />
-                <Route path="/checkout" element={<Checkout/>}/>
+                <Route path="/checkout" element={<Checkout />} />
             </Routes>
             <Footer />
-
-            <ToastContainer />
+            <ToastContainer
+                position="top-center"
+                autoClose={1000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover={false}
+                theme="light"
+            />{" "}
         </div>
     );
 }

@@ -1,4 +1,20 @@
+:root {
+    --primary: #354259;
+    --secondary: #f0f9f9;
+    --seconday2: #C2DED1;
+  }
+
 .App{
     position: relative;
     min-height: 100vh;
+    background-color: var(--secondary);
 }
+
+/* links */
+.heading-link{
+    color: black;
+    text-decoration: none;
+    font-weight:900;
+    font-size: x-large;
+}
+

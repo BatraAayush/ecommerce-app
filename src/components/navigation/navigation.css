@@ -1,5 +1,5 @@
 .nav-bar{
-    background-color: lightgrey;
+    background-color: var(--seconday2);
     padding: 1rem;
     text-align: center;
     position: sticky;

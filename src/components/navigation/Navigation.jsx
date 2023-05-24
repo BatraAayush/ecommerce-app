@@ -8,7 +8,7 @@ export const Navigation = () => {
     const { searchHandler } = useDataContext();
     return (
         <div className="nav-bar">
-            <NavLink to={"/"}>
+            <NavLink className={"heading-link"} to={"/"}>
                 <strong>Shoes Mart</strong>
             </NavLink>
             &emsp;

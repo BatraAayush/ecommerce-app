@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import { useLoginContext } from "../../contexts/LoginProvider";
+import { useState } from "react";
 
 export const Signup = () => {
+    const [show, setShow] = useState(false);
+    const [showConform, setShowConform] = useState(false);
+
+
+
     const {
         setSEmailInputHandler,
         setFNInputHandler,
@@ -48,8 +54,15 @@ export const Signup = () => {
                 <input
                     onChange={(e) => setSPasswordInputHandler(e)}
                     placeholder="Password"
-                    type="text"
+                    type={show ? "text" : "password"}
                 />
+                <button
+                    onClick={() => {
+                        show ? setShow(false) : setShow(true);
+                    }}
+                >
+                    {show ? "Hide Password" : "Show Password"}
+                </button>
             </p>{" "}
             <p>
                 <label>Re-Enter your Password *</label>
@@ -57,8 +70,15 @@ export const Signup = () => {
                 <input
                     onChange={(e) => setConformPasswordInputHandler(e)}
                     placeholder="Conform Password"
-                    type="text"
+                    type={showConform ? "text" : "password"}
                 />
+                <button
+                    onClick={() => {
+                        showConform ? setShowConform(false) : setShowConform(true);
+                    }}
+                >
+                    {showConform ? "Hide Password" : "Show Password"}
+                </button>
             </p>
             <button type="submit" onClick={signUpHandler}>
                 Sign Up
