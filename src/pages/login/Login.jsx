@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLoginContext } from "../../contexts/LoginProvider";
 import { useState } from "react";
+import "./Login.css";
 
 export const Login = () => {
     const [show, setShow] = useState(false);
@@ -9,50 +10,57 @@ export const Login = () => {
         setPasswordInputHandler,
         loginHandler,
         login,
-        logOutHandler
+        logOutHandler,
     } = useLoginContext();
 
     return (
-        <div>
+        <div className="login">
             {login ? (
                 <>
-                <h1>Logged In</h1>
-                <button onClick={logOutHandler}>Log Out</button>
+                    <h1>Logged In</h1>
+                    <button className="test" onClick={logOutHandler}>Log Out</button>
                 </>
             ) : (
                 <>
                     <h1>Login</h1>
-                    <label>Email address</label>
                     <br />
                     <input
+                        className="input-field"
                         onChange={(e) => setEmailInputHandler(e)}
                         type="email"
-                        placeholder="testuser@gmail.com"
+                        placeholder="Email address"
                         required
                     />
-                    <br />
-                    <label>Password</label>
                     <br />
                     <input
+                        className="input-field"
                         onChange={(e) => setPasswordInputHandler(e)}
                         type={show ? "text" : "password"}
-                        placeholder="testuser"
+                        placeholder="Password"
                         required
                     />
-                    <button onClick={() => {
-                        show ? setShow(false) : setShow(true); 
-                    }}>{show ? "Hide Password" : "Show Password"}</button>
+                    <button
+                        className="show-button"
+                        onClick={() => {
+                            show ? setShow(false) : setShow(true);
+                        }}
+                    >
+                        {show ? "Hide Password" : "Show Password"}
+                    </button>
                     <p>
                         <input type="checkbox" />
-                        Remember me <Link>Forgot your Password?</Link>
+                        Remember me <Link className="light-link">Forgot your Password?</Link>
                     </p>
-                    <button onClick={() => loginHandler("real")}>Log In</button>
+                    <button className="button login-button" onClick={() => loginHandler("real")}>Log In</button>
                     <p>
-                        Log in as a test user. <button onClick={() => loginHandler("test")}>Test Login</button>
+                        Log in as a test user
+                        <button className="test" onClick={() => loginHandler("test")}>
+                            Test Login
+                        </button>
                     </p>
                     <p>
                         Don't have an Account ?{" "}
-                        <Link to={"/signup"}>Sign Up</Link>
+                        <Link className="basic-link" to={"/signup"}>Sign Up</Link>
                     </p>
                 </>
             )}

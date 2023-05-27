@@ -8,7 +8,6 @@ export const Home = () => {
         trendingProducts,
         categories,
         singleCategoryFilterHandler,
-        getAllDataHandler,
         productsLoading,
         categoriesLoading,
     } = useDataContext();
@@ -19,9 +18,8 @@ export const Home = () => {
                     Products
                 </Link>
             </div>
-            <hr></hr>
             <div>
-                <h2>Categories </h2>
+                <h1>Categories </h1>
                 {categoriesLoading ? (
                     <h1>Loading...</h1>
                 ) : (
@@ -34,6 +32,7 @@ export const Home = () => {
                                     alt="category"
                                 />
                                 <button
+                                    className="button"
                                     onClick={() =>
                                         singleCategoryFilterHandler(categoryName)
                                     }
@@ -45,9 +44,8 @@ export const Home = () => {
                     </ul>
                 )}
             </div>
-            <hr></hr>
             <div>
-                <h2>Trending Collection</h2>
+                <h1>Trending Collection</h1>
                 {productsLoading ? (
                     <h1>Loading...</h1>
                 ) : (

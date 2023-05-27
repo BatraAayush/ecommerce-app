@@ -1,6 +1,9 @@
 import { toast } from "react-toastify";
 import { useCartContext } from "../contexts/CartProvider";
 import { useLoginContext } from "../contexts/LoginProvider";
+import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
+
 
 export const AddToWishlistButton = ({ product }) => {
     const loginNotify = () => toast("Please Login First");
@@ -18,6 +21,7 @@ export const AddToWishlistButton = ({ product }) => {
 
     return !isItemPresentinWishlistHandler(product) ? (
         <button
+        className="heart-icon"
             onClick={() => {
                 if (login) {
                     wishlistCounter++;
@@ -30,14 +34,16 @@ export const AddToWishlistButton = ({ product }) => {
                 }
             }}
         >
-            Add To Wishlist
+            <AiOutlineHeart/>
         </button>
     ) : (
-        <button onClick={() => {
+        <button
+        className="heart-icon"
+         onClick={() => {
             removedNotify();
             removeFromWishlistHandler(product._id)
             }}>
-            Remove From Wishlist
+            <AiFillHeart/>
         </button>
     );
 };

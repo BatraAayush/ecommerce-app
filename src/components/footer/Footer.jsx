@@ -6,9 +6,9 @@ export const Footer = () => {
         <strong>Shoes Mart</strong>
         <div>&#169; Developed By Aayush Batra</div>
         <div className="social-media">
-            <Link>LinkedIn</Link>||
-            <Link>Twitter</Link>||
-            <Link>Github</Link>||
+            <Link>LinkedIn</Link>
+            <Link>Twitter</Link>
+            <Link>Github</Link>
         </div>
     </div>
 }

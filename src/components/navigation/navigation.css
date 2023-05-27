@@ -1,8 +1,22 @@
 .nav-bar{
-    background-color: var(--seconday2);
+    background: var(--secondary);
     padding: 1rem;
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-bar{
+    width: 30%;
+    border-radius: .5rem;
+    padding: .5rem;
+}
+
+.links{
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
 }

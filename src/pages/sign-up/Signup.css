@@ -1,0 +1,14 @@
+.signup p{
+    margin:0
+}
+
+.signup{
+    margin: auto;
+    width: 20rem
+}
+
+.signup .signup-button{
+    margin: 1rem 0;
+    display: block;
+    width: 100%;
+}

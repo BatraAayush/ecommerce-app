@@ -1,9 +1,10 @@
 .product-card{
     text-align: left;
     width: 200px;
-    box-shadow: 0 0 1rem grey;
+    box-shadow: 0 0 .3rem var(--grey);
     margin: 1rem;
-    padding: 1rem;
+    padding: 1rem 1rem;
+    background-color: white;
 }
 
 .product-card img{
@@ -11,11 +12,37 @@
     height: 200px;
 }
 
-.product-card .price{
+.product-card .link{
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.product-card .cut-price{
     text-decoration: line-through;
     color: gray;
 }
 
 .product-card h3{
     height: 2.5rem;
+    margin: 0;
+}
+
+.product-card p{
+    margin: .5rem 0;
+}
+
+.product-card .heart-icon{
+    border: none;
+    background: none;
+    color: rgb(242, 22, 22);
+    font-size: x-large;
+    display: block;
+    margin-left: auto;
+}
+
+.product-card .button{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
 }

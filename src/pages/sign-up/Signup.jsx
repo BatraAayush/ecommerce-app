@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { useLoginContext } from "../../contexts/LoginProvider";
 import { useState } from "react";
+import "./Signup.css";
 
 export const Signup = () => {
     const [show, setShow] = useState(false);
     const [showConform, setShowConform] = useState(false);
-
-
 
     const {
         setSEmailInputHandler,
@@ -17,12 +16,11 @@ export const Signup = () => {
         signUpHandler,
     } = useLoginContext();
     return (
-        <div>
+        <div className="signup">
             <h1>Sign Up</h1>
             <p>
-                <label>Enter your email *</label>
-                <br />
                 <input
+                    className="input-field"
                     onChange={(e) => {
                         setSEmailInputHandler(e);
                     }}
@@ -31,60 +29,60 @@ export const Signup = () => {
                 />
             </p>
             <p>
-                <label>Enter your First Name *</label>
-                <br />
                 <input
+                    className="input-field"
                     onChange={(e) => setFNInputHandler(e)}
                     placeholder="First Name"
                     type="text"
                 />
-            </p>{" "}
+            </p>
             <p>
-                <label>Enter your Last Name *</label>
-                <br />
                 <input
+                    className="input-field"
                     onChange={(e) => setLNInputHandler(e)}
                     placeholder="Last Name"
                     type="text"
                 />
-            </p>{" "}
+            </p>
             <p>
-                <label>Enter your Password *</label>
-                <br />
                 <input
+                    className="input-field"
                     onChange={(e) => setSPasswordInputHandler(e)}
                     placeholder="Password"
                     type={show ? "text" : "password"}
                 />
                 <button
+                    className="show-button"
                     onClick={() => {
                         show ? setShow(false) : setShow(true);
                     }}
                 >
                     {show ? "Hide Password" : "Show Password"}
                 </button>
-            </p>{" "}
+            </p>
             <p>
-                <label>Re-Enter your Password *</label>
-                <br />
                 <input
+                    className="input-field"
                     onChange={(e) => setConformPasswordInputHandler(e)}
                     placeholder="Conform Password"
                     type={showConform ? "text" : "password"}
                 />
                 <button
+                    className="show-button"
                     onClick={() => {
-                        showConform ? setShowConform(false) : setShowConform(true);
+                        showConform
+                            ? setShowConform(false)
+                            : setShowConform(true);
                     }}
                 >
                     {showConform ? "Hide Password" : "Show Password"}
                 </button>
             </p>
-            <button type="submit" onClick={signUpHandler}>
+            <button className="button signup-button" type="submit" onClick={signUpHandler}>
                 Sign Up
             </button>
             <p>
-                Already have an account? <Link to={"/login"}>Log In</Link>
+                Already have an account? <Link className="basic-link" to={"/login"}>Log In</Link>
             </p>
         </div>
     );

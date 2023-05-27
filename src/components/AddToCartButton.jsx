@@ -12,6 +12,12 @@ export const AddToCartButton = ({ product }) => {
     const notify = () => toast("Added to Cart");
     return !isItemPresentInCartHandler(product) ? (
         <button
+            disabled={product.outOfStock}
+            style={{
+                backgroundColor: product.outOfStock ? "#abadaf" : "",
+                cursor: product.outOfStock ? "no-drop" : "pointer",
+                }}
+            className="button"
             onClick={() => {
                 if (login) {
                     counter++;
@@ -28,7 +34,7 @@ export const AddToCartButton = ({ product }) => {
         </button>
     ) : (
         <>
-            <Link to={"/cart"}>Go to Cart</Link>
+            <Link className="button" to={"/cart"}>Go to Cart</Link>
         </>
     );
 };
