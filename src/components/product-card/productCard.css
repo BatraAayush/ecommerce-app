@@ -31,18 +31,16 @@
     margin: .5rem 0;
 }
 
-.product-card .heart-icon{
-    border: none;
-    background: none;
-    color: rgb(242, 22, 22);
-    font-size: x-large;
-    display: block;
-    margin-left: auto;
-}
 
 .product-card .button{
     display: block;
     width: 100%;
     box-sizing: border-box;
     text-decoration: none;
+    text-align: center;
 }
+
+.product-card .flex-container{
+    display: flex;
+}
+

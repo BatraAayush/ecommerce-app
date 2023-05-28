@@ -31,6 +31,7 @@ const Checkout = () => {
     const fillAddressNotify = () => toast("Please select an Address");
 
     const [selectedAddress, setSelectedAddress] = useState({});
+    console.log(selectedAddress);
     return orderPlaced ? (
         <div>
             <h1>Order Placed Successfully</h1>
@@ -42,6 +43,11 @@ const Checkout = () => {
                 <p>Delivery charges: ${deliveryCharge}</p>
                 <p>Net Price: ${netPrice + deliveryCharge}</p>
                 <h2>Address Details</h2>
+                <h3>{selectedAddress.name}</h3>
+                            <p>{`${selectedAddress.address} ${selectedAddress.city} ${selectedAddress.pinCode}`}</p>
+                            <p>
+                                <strong>Mobile no:</strong> {selectedAddress.mobileNo}
+                            </p>
             </div>
             <Link to="/">Back To Website</Link>
         </div>

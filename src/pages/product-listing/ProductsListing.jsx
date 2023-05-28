@@ -1,6 +1,8 @@
 import { ProductCard } from "../../components/product-card/ProductCard";
 import { useDataContext } from "../../contexts/DataProvider";
 import "./productListing.css";
+import { AiFillStar } from "react-icons/ai";
+
 
 export const ProductListing = () => {
     const {
@@ -60,7 +62,7 @@ export const ProductListing = () => {
                         defaultValue={ratingRange ? ratingRange : 0}
                         type="range"
                     />
-                    <div>Above || Equal ${ratingRange ? ratingRange : 0}</div>
+                    <div>Above || Equal {ratingRange ? ratingRange : 0} <AiFillStar className="star"/></div>
                     <h3>Sort By</h3>
                     <input
                         checked={sortPriceFilter === "asc"}
