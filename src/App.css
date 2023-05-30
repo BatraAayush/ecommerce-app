@@ -4,9 +4,10 @@
     --grey: #9db2bf;
 }
 
-html {
+
+/* html {
     scrollbar-gutter: stable;
-}
+} */
 
 body {
     scrollbar-gutter: stable both-edges;
@@ -22,6 +23,10 @@ body {
 ul {
     list-style: none;
     padding: 0;
+}
+
+.div-margin{
+    margin-left: 1rem;
 }
 
 /* links */
@@ -105,6 +110,48 @@ ul {
     font-size: x-large;
     margin-left: auto;
     display: flex;
+}
+
+/* font sizes */
+h1{
+    font-size: 3rem;
+}
+
+h2{
+    font-size: 2rem;
+}
+
+p{
+    font-size: 1.25rem;
+}
+
+@media(max-width: 1024px){
+    h1{
+        font-size: 2.5rem;
+    }
+
+    h2{
+        font-size: 1.75rem;
+    }
+
+    p{
+        font-size: 1.125rem;
+    }
+}
+
+@media(max-width : 786px){
+
+    h1{
+        font-size: 2rem;
+    }
+
+    h2{
+        font-size: 1.5rem;
+    }
+
+    p{
+        font-size: 1rem;
+    }
 }
 
 

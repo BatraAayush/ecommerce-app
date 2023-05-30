@@ -5,7 +5,7 @@ import "./Wishlist.css"
 export const Wishlist = () => {
     const { wishlist } = useCartContext();
     return wishlist.length === 0 ? (
-        <h1>Your Wishlist is Empty</h1>
+        <h1 className="div-margin">Your Wishlist is Empty</h1>
     ) : (
         <div>
             <h1>My Wishlist</h1>

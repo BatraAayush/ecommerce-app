@@ -18,7 +18,7 @@ export const Login = () => {
             {login ? (
                 <>
                     <h1>Logged In</h1>
-                    <button className="test" onClick={logOutHandler}>Log Out</button>
+                    <button className="button" onClick={logOutHandler}>Log Out</button>
                 </>
             ) : (
                 <>

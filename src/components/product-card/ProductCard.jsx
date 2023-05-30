@@ -14,7 +14,6 @@ export const ProductCard = ({ product }) => {
         outOfStock,
         rating,
     } = product;
-    console.log(product);
     return (
         <div className="product-card">
             <div className="flex-container">

@@ -122,7 +122,7 @@ export const products = [
         productName: "Puma RS-X",
         productDescription: "Chunky sneakers with a retro-inspired design.",
         productImage:
-            "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1350,h_1350/global/369579/11/sv01/fnd/IND/fmt/png/RS-X-Reinvention-Unisex-Sneakers",
+            "https://img.tatacliq.com/images/i9/437Wx649H/MP000000016286499_437Wx649H_202301300858572.jpeg",
         gender: "Men",
         color: "White",
         size: "10.5",

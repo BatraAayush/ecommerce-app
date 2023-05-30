@@ -4,6 +4,7 @@ import { useCartContext } from "../../contexts/CartProvider";
 import { useAddressContext } from "../../contexts/AddressProvider";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { RxCross1 } from "react-icons/rx";
 
 const Checkout = () => {
     const { items, totalPrice, totalDiscount, netPrice } = useCartContext();
@@ -31,25 +32,41 @@ const Checkout = () => {
     const fillAddressNotify = () => toast("Please select an Address");
 
     const [selectedAddress, setSelectedAddress] = useState({});
-    console.log(selectedAddress);
     return orderPlaced ? (
-        <div>
+        <div className="summary-container">
             <h1>Order Placed Successfully</h1>
-            <div>
+            <div className="summary">
                 <h2>Summary</h2>
-                <p>No of items: {items}</p>
-                <p>Total Price: ${totalPrice}</p>
-                <p>Discount: ${totalDiscount}</p>
-                <p>Delivery charges: ${deliveryCharge}</p>
-                <p>Net Price: ${netPrice + deliveryCharge}</p>
-                <h2>Address Details</h2>
+                <p className="flex-container">
+                    <strong className="small-heading">No of items</strong>
+                    {items}
+                </p>
+                <p className="flex-container">
+                    <strong className="small-heading">Total Price</strong> $
+                    {totalPrice}
+                </p>
+                <p className="flex-container">
+                    <strong className="small-heading">Discount</strong> $
+                    {totalDiscount}
+                </p>
+                <p className="flex-container">
+                    <strong className="small-heading">Delivery charges</strong>
+                    ${deliveryCharge}
+                </p>
+                <p className="flex-container">
+                    <strong className="small-heading">Net Price</strong> $
+                    {netPrice + deliveryCharge}
+                </p>
+                <h3>Address Details</h3>
                 <h3>{selectedAddress.name}</h3>
-                            <p>{`${selectedAddress.address} ${selectedAddress.city} ${selectedAddress.pinCode}`}</p>
-                            <p>
-                                <strong>Mobile no:</strong> {selectedAddress.mobileNo}
-                            </p>
+                <p>{`${selectedAddress.address}, ${selectedAddress.city}, ${selectedAddress.pinCode}`}</p>
+                <p>
+                    <strong>Mobile no:</strong> {selectedAddress.mobileNo}
+                </p>
             </div>
-            <Link to="/">Back To Website</Link>
+            <Link className="button" to="/">
+                Back To Website
+            </Link>
         </div>
     ) : (
         <div className="checkout">
@@ -57,7 +74,7 @@ const Checkout = () => {
                 <h1>Address Details</h1>
                 <ul>
                     {addressData.map((address, i) => (
-                        <div key={i}>
+                        <div className="address-container" key={i}>
                             <input
                                 name="address"
                                 type="radio"
@@ -67,69 +84,87 @@ const Checkout = () => {
                                     }
                                 }}
                             />
-                            <button onClick={() => deleteHandler(i)}>
-                                Delete
-                            </button>
 
-                            <h1>{address.name}</h1>
-                            <p>{`${address.address} ${address.city} ${address.pinCode}`}</p>
-                            <p>
-                                <strong>Mobile no:</strong> {address.mobileNo}
-                            </p>
-                            <hr />
+                            <div className="address-card">
+                                <h1>{address.name}</h1>
+                                <p>{`${address.address}, ${address.city}, ${address.pinCode}`}</p>
+                                <p>
+                                    <strong>Mobile no:</strong>
+                                    {address.mobileNo}
+                                </p>
+                            </div>
+                            <button
+                                className="cross-button"
+                                onClick={() => deleteHandler(i)}
+                            >
+                                <RxCross1 />
+                            </button>
                         </div>
                     ))}
                 </ul>
                 <button
+                    className="button"
+                    style={{
+                        backgroundColor: showAddress
+                            ? "rgb(171, 173, 175)"
+                            : "",
+                        cursor: showAddress ? "not-allowed" : "pointer",
+                    }}
                     disabled={showAddress}
                     onClick={() => showAddressBoxHandler(true)}
                 >
                     Add Address
                 </button>
                 {showAddress && (
-                    <div>
+                    <div className="input-address-container">
                         <h3>Add new Address</h3>
                         <p>
-                            <label>Name: </label>
                             <input
+                                className="input-field"
+                                placeholder="Name"
                                 value={name}
                                 onChange={(e) => setNameHandler(e)}
                                 type="text"
                             />
                         </p>
                         <p>
-                            <label>Mobile Number: </label>
                             <input
+                                className="input-field"
+                                placeholder="Mobile Number"
                                 value={mobileNo}
                                 onChange={(e) => setMobileNoHandler(e)}
                                 type="number"
                             />
                         </p>
                         <p>
-                            <label>Pincode: </label>
                             <input
+                                className="input-field"
+                                placeholder="Pincode"
                                 value={pinCode}
                                 onChange={(e) => setPinCodeHandler(e)}
                                 type="number"
                             />
                         </p>
                         <p>
-                            <label>City: </label>
                             <input
+                                className="input-field"
+                                placeholder="City"
                                 value={city}
                                 onChange={(e) => setCityHandler(e)}
                                 type="text"
                             />
                         </p>
                         <p>
-                            <label>Address: </label>
                             <input
+                                className="input-field"
+                                placeholder="Address"
                                 value={address}
                                 onChange={(e) => setAddressHandler(e)}
                                 type="text"
                             />
                         </p>
                         <button
+                            className="button"
                             type="submit"
                             onClick={(e) => {
                                 addAddressHandler();
@@ -137,22 +172,39 @@ const Checkout = () => {
                         >
                             Add
                         </button>
-                        <button onClick={() => showAddressBoxHandler(false)}>
+                        <button
+                            className="button"
+                            onClick={() => showAddressBoxHandler(false)}
+                        >
                             Cancel
                         </button>
                     </div>
                 )}
             </div>
             <div className="bill">
+                <h1>Price Details</h1>
                 <p>
-                    <strong>Price Details</strong>
+                    <strong className="small-heading">No of items</strong>
+                    {items}
                 </p>
-                <p>No of items: {items}</p>
-                <p>Total Price: ${totalPrice}</p>
-                <p>Discount: ${totalDiscount}</p>
-                <p>Delivery charges: ${deliveryCharge}</p>
-                <p>Net Price: ${netPrice + deliveryCharge}</p>
+                <p>
+                    <strong className="small-heading">Total Price</strong> $
+                    {totalPrice}
+                </p>
+                <p>
+                    <strong className="small-heading">Discount</strong> $
+                    {totalDiscount}
+                </p>
+                <p>
+                    <strong className="small-heading">Delivery charges</strong>{" "}
+                    ${deliveryCharge}
+                </p>
+                <p>
+                    <strong className="small-heading">Net Price</strong> $
+                    {netPrice + deliveryCharge}
+                </p>
                 <button
+                    className="button"
                     onClick={() => {
                         console.log(Object.keys(selectedAddress));
                         if (Object.keys(selectedAddress).length === 0) {

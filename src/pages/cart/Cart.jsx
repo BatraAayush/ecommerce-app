@@ -19,7 +19,7 @@ export const Cart = () => {
     const removedNotify = () => toast("Removed from Cart");
 
     return cart.length === 0 ? (
-        <h1>Your Cart is Empty</h1>
+        <h1 className="div-margin">Your Cart is Empty</h1>
     ) : (
         <div className="cart-container">
             <h1>My Cart</h1>
