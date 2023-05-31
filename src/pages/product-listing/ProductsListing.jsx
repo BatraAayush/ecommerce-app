@@ -1,8 +1,8 @@
 import { ProductCard } from "../../components/product-card/ProductCard";
+import Spinner from "../../components/spinner/Spinner";
 import { useDataContext } from "../../contexts/DataProvider";
 import "./productListing.css";
 import { AiFillStar } from "react-icons/ai";
-
 
 export const ProductListing = () => {
     const {
@@ -17,9 +17,14 @@ export const ProductListing = () => {
         categoryFilter,
         sortPriceHandler,
         sortPriceFilter,
-        productsLoading
+        productsLoading,
     } = useDataContext();
-    return productsLoading ? <h1>Loading...</h1> : <div className="product-listing">
+    return productsLoading ? (
+        <div className="loading-div">
+            <Spinner className="spinner" />
+        </div>
+    ) : (
+        <div className="product-listing">
             <div className="flex-container-1">
                 <div className="filters">
                     <div>
@@ -45,7 +50,9 @@ export const ProductListing = () => {
                         {categories.map(({ categoryName, id }) => (
                             <li key={id}>
                                 <input
-                                    checked={categoryFilter.includes(categoryName)}
+                                    checked={categoryFilter.includes(
+                                        categoryName
+                                    )}
                                     value={categoryName}
                                     onChange={(e) => setCategoryHandler(e)}
                                     type="checkbox"
@@ -62,7 +69,10 @@ export const ProductListing = () => {
                         defaultValue={ratingRange ? ratingRange : 0}
                         type="range"
                     />
-                    <div>Above || Equal {ratingRange ? ratingRange : 0} <AiFillStar className="star"/></div>
+                    <div>
+                        Above || Equal {ratingRange ? ratingRange : 0}{" "}
+                        <AiFillStar className="star" />
+                    </div>
                     <h3>Sort By</h3>
                     <input
                         checked={sortPriceFilter === "asc"}
@@ -89,5 +99,5 @@ export const ProductListing = () => {
                 </ul>
             </div>
         </div>
-
+    );
 };
