@@ -41,7 +41,7 @@ ul {
 }
 
 /* links */
-.heading-link {
+.heading-link, .heading-link {
     color: var(--primary);
     text-decoration: none;
     font-weight: normal;
@@ -50,7 +50,8 @@ ul {
 
 .heading-link:hover,
 .text-link:hover {
-    color: rgb(105, 103, 103);
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
 }
 
 .text-link {
