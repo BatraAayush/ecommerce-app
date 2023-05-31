@@ -161,4 +161,8 @@ p {
     p {
         font-size: 1rem;
     }
+
+    .button{
+        font-size: smaller;
+    }
 }

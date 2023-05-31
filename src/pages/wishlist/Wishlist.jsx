@@ -7,7 +7,7 @@ export const Wishlist = () => {
     return wishlist.length === 0 ? (
         <h1 className="div-margin">Your Wishlist is Empty</h1>
     ) : (
-        <div>
+        <div className="div-margin">
             <h1>My Wishlist</h1>
             <ul className="wishlist">
                 {wishlist.map(product => <ProductCard key={product.id} product={product}/>)}
