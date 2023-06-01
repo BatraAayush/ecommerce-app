@@ -19,7 +19,7 @@ export const ProductCard = ({ product }) => {
             <div className="flex-container">
                 <strong>
                     {rating}
-                    <AiFillStar className="star"/>
+                    <AiFillStar className="star" />
                 </strong>
                 <AddToWishlistButton
                     className="wishlist-button"
@@ -31,10 +31,12 @@ export const ProductCard = ({ product }) => {
                 <img src={productImage} alt={productName} />
                 <h3>{productName}</h3>
                 <p className="price">
-                    Price: ${discountedPrice}{" "}
-                    <span className="cut-price">${price}</span>
+                    <strong>Price:</strong> ${discountedPrice}{" "}
+                    {discountedPrice !== price ? (
+                        <span className="cut-price">${price}</span>
+                    ) : null}
                 </p>
-                {outOfStock ? <h3>Out of Stock</h3> : <h3>In Stock</h3>}
+                {outOfStock ? <h3 className="out-of-stock">Out of Stock</h3> : <h3>In Stock</h3>}
             </Link>
             <AddToCartButton product={product} />
         </div>

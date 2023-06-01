@@ -17,7 +17,7 @@
     text-decoration: none;
 }
 
-.product-card .cut-price{
+.cut-price{
     text-decoration: line-through;
     color: gray;
 }

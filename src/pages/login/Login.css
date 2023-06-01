@@ -1,17 +1,18 @@
 .login{
-    width: 20rem;
+    width: 25rem;
     margin: auto;
 }
 
 .light-link{
     text-decoration: none;
-    margin-left: 2rem;
-    color: #7b7b7b
+    margin-left: 1rem;
+    color: #7b7b7b;
+    font-size: initial;
 }
 
 .login-button{
     display: block;
-    width: 100%;
+    width: 80%;
 }
 
 .test{

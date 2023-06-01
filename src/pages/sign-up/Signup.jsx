@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useLoginContext } from "../../contexts/LoginProvider";
 import { useState } from "react";
 import "./Signup.css";
+import { BiShowAlt } from "react-icons/bi";
+import { BiHide } from "react-icons/bi";
 
 export const Signup = () => {
     const [show, setShow] = useState(false);
@@ -57,7 +59,7 @@ export const Signup = () => {
                         show ? setShow(false) : setShow(true);
                     }}
                 >
-                    {show ? "Hide Password" : "Show Password"}
+                    {show ? <BiHide/> : <BiShowAlt/>}
                 </button>
             </p>
             <p>
@@ -75,7 +77,7 @@ export const Signup = () => {
                             : setShowConform(true);
                     }}
                 >
-                    {showConform ? "Hide Password" : "Show Password"}
+                    {showConform ? <BiHide/> : <BiShowAlt/>}
                 </button>
             </p>
             <button className="button signup-button" type="submit" onClick={signUpHandler}>

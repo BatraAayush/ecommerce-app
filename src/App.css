@@ -77,12 +77,9 @@ ul {
 }
 
 .show-button {
-    margin-top: 0.2rem;
+    font-size: x-large;
     border: none;
-    border: 1px solid var(--primary);
-    border-radius: 0.2rem;
-    padding: 0.2rem;
-    background-color: var(--secondary);
+    background-color: inherit;
     cursor: pointer;
 }
 
@@ -99,10 +96,9 @@ ul {
 /* inputs */
 .input-field {
     box-sizing: border-box;
-    margin: 1rem 1rem 0 0;
+    margin: 1rem .5rem 0 0;
     padding: 0.5rem;
-    width: 15rem;
-    width: 100%;
+    width: 80%;
 }
 
 /* icon */
@@ -121,6 +117,10 @@ ul {
     font-size: x-large;
     margin-left: auto;
     display: flex;
+}
+
+.out-of-stock{
+    color: rgb(171, 173, 175);;
 }
 
 /* font sizes */

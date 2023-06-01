@@ -5,7 +5,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 
 
-export const AddToWishlistButton = ({ product }) => {
+export const AddToWishlistButton = ({ product, details }) => {
     const loginNotify = () => toast("Please Login First");
 
     const {
@@ -21,7 +21,7 @@ export const AddToWishlistButton = ({ product }) => {
 
     return !isItemPresentinWishlistHandler(product) ? (
         <button
-        className="heart-icon"
+        className={details ? "button" : "heart-icon"}
             onClick={() => {
                 if (login) {
                     wishlistCounter++;
@@ -34,16 +34,16 @@ export const AddToWishlistButton = ({ product }) => {
                 }
             }}
         >
-            <AiOutlineHeart/>
+            {details ? "Add to wishlist" : <AiOutlineHeart/>}
         </button>
     ) : (
         <button
-        className="heart-icon"
+        className={details ? "button" : "heart-icon"}
          onClick={() => {
             removedNotify();
             removeFromWishlistHandler(product._id)
             }}>
-            <AiFillHeart/>
+            {details ? "Remove from Wishlist" : <AiFillHeart/>}
         </button>
     );
 };

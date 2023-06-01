@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import { useLoginContext } from "../../contexts/LoginProvider";
 import { useState } from "react";
 import "./Login.css";
+import { BiShowAlt } from "react-icons/bi";
+import { BiHide } from "react-icons/bi";
+
+
 
 export const Login = () => {
     const [show, setShow] = useState(false);
@@ -45,7 +49,7 @@ export const Login = () => {
                             show ? setShow(false) : setShow(true);
                         }}
                     >
-                        {show ? "Hide Password" : "Show Password"}
+                        {show ? <BiHide/> : <BiShowAlt/>}
                     </button>
                     <p>
                         <input type="checkbox" />

@@ -31,7 +31,6 @@ export const ProductDetails = () => {
         <div className="product-details">
             <img src={productImage} alt="productImage" />
             <div className="details">
-                <h1>Product Details</h1>
                 <h1>{productName}</h1>
                 <p>
                     <strong>Description: </strong>
@@ -54,19 +53,21 @@ export const ProductDetails = () => {
                     {color}
                 </p>
                 <p>
-                    <strong>Discount Percentage: </strong>
-                    {discountPercent}
+                    <strong>Discount: </strong>
+                    {discountPercent}%
                 </p>
                 <p>
-                    <strong>Price: </strong>${discountedPrice} - {price}
+                    <strong>Price: </strong>${discountedPrice}{" "}
+                    {discountedPrice !== price ? <span className="cut-price">${price}</span> : null}
                 </p>
                 <p>
-                    <strong>{onSale ? "On Sale" : ""}</strong>{" "}
-                    <strong>{outOfStock ? "Out of Stock" : ""}</strong>{" "}
-                    <strong>{trending ? "Trending" : ""}</strong>{" "}
+                    {onSale ? <strong className="tags">On Sale</strong>:null}
+                    {outOfStock ? <strong className="tags out-of-stock">Out Of Stock</strong>:null}
+                    {trending ? <strong className="tags">Trending</strong>:null}
                 </p>
-                <AddToCartButton product={product}/>
-                <AddToWishlistButton product={product} />
+                <AddToCartButton product={product} />
+                &emsp;
+                <AddToWishlistButton product={product} details />
             </div>
         </div>
     );
