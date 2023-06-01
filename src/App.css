@@ -87,8 +87,6 @@ ul {
     background: none;
     font-weight: bolder;
     font-size: large;
-    position: relative;
-    bottom: 1rem;
     cursor: pointer;
 }
 

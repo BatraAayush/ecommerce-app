@@ -39,6 +39,15 @@ export const Cart = () => {
                                 <div className="flex-container-2">
                                     <img src={productImage} alt={productName} />
                                     <AddToWishlistButton product={product} />
+                                    <button
+                                            className="cross-button mobile"
+                                            onClick={() => {
+                                                removedNotify();
+                                                removeFromCartHandler(_id);
+                                            }}
+                                        >
+                                            <RxCross1 />
+                                        </button>
                                 </div>
 
                                 <div>
@@ -47,7 +56,7 @@ export const Cart = () => {
                                             {productName}
                                         </h3>{" "}
                                         <button
-                                            className="cross-button"
+                                            className="cross-button desktop"
                                             onClick={() => {
                                                 removedNotify();
                                                 removeFromCartHandler(_id);
