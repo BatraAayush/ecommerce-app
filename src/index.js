@@ -9,21 +9,24 @@ import { LoginProvider } from "./contexts/LoginProvider";
 import { CartProvider } from "./contexts/CartProvider";
 import AddressProvider from "./contexts/AddressProvider";
 
+import ScrollToTop from "./helpers/ScrollToTop";
+
 // Call make Server
 makeServer();
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <DataProvider>
-                <LoginProvider>
-                    <CartProvider>
-                        <AddressProvider>
-                            <App />
-                        </AddressProvider>
-                    </CartProvider>
-                </LoginProvider>
-            </DataProvider>
+            <ScrollToTop/>
+                <DataProvider>
+                    <LoginProvider>
+                        <CartProvider>
+                            <AddressProvider>
+                                <App />
+                            </AddressProvider>
+                        </CartProvider>
+                    </LoginProvider>
+                </DataProvider>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById("root")

@@ -2,5 +2,5 @@
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 5rem;
-    justify-content: center;
+    justify-content: flex-start;
 }
