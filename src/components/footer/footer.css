@@ -4,7 +4,7 @@
     padding: 1rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -14,12 +14,13 @@
 .footer .social-media{
     display: flex;
     width: 20%;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .footer a{
     color: var(--secondary);
     text-decoration: none;
+    font-size: large;
 }
 
 @media(max-width : 786px){

@@ -51,7 +51,6 @@ ul {
 .heading-link:hover,
 .text-link:hover {
     color: rgb(0, 0, 0);
-    font-weight: bolder;
 }
 
 .text-link {
