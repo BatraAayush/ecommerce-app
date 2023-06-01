@@ -54,7 +54,7 @@
 }
 
 .summary-container{
-    width: max-content;
+    width: 50%;
     margin: auto;
     padding-bottom: 6rem;
 }
@@ -87,5 +87,9 @@
 
     .checkout .address{
         min-width: 0;
+    }
+
+    .summary-container{
+        width: 95%;
     }
 }
