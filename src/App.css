@@ -84,6 +84,7 @@ ul {
 
 .cross-button {
     border: none;
+    color: var(--primary);
     background: none;
     font-weight: bolder;
     font-size: large;
