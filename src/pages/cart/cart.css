@@ -54,8 +54,6 @@
 .cart .decrease-button {
     width: 1.5rem;
     height: 1.5rem;
-    border: none;
-    background: none;
     font-size: large;
     border: 1px solid var(--primary);
     margin: 0 0.5rem;
@@ -63,6 +61,8 @@
     background-color: var(--primary);
     color: var(--secondary);
     cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
 }
 
 @media (max-width: 786px) {
