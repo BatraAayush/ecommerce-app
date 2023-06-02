@@ -1,6 +1,3 @@
-<div align="center">
-<!--   <img src="src/assets/logo.svg" height="100" width="100" alt="logo"/>
-   -->
 # Shoes Mart
   An Ecommerce website for Shoes. 
 </div>
@@ -29,5 +26,3 @@
 - Vanilla CSS
 
 ## **Demo -**
-
-<!-- ![site overview](https://github.com/AmanHarsh02/project-1-ecommerce-neogcamp-level-one/blob/master/src/assets/SnapShop-Overview.gif) -->
