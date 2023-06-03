@@ -53,6 +53,7 @@ export const ProductListing = () => {
                         min={0}
                         max={200}
                         defaultValue={priceRange ? priceRange : 200}
+                        value={Number(priceRange)}
                         type="range"
                     />
                     <div>Below || Equal ${priceRange ? priceRange : 200}</div>
@@ -79,6 +80,8 @@ export const ProductListing = () => {
                         max={5}
                         defaultValue={ratingRange ? ratingRange : 0}
                         type="range"
+                        value={Number(ratingRange)}
+
                     />
                     <div>
                         Above || Equal {ratingRange ? ratingRange : 0}{" "}
@@ -127,6 +130,7 @@ export const ProductListing = () => {
                         min={0}
                         max={200}
                         defaultValue={priceRange ? priceRange : 200}
+                        value={Number(priceRange)}
                         type="range"
                     />
                     <div>Below || Equal ${priceRange ? priceRange : 200}</div>
@@ -138,7 +142,7 @@ export const ProductListing = () => {
                                     checked={categoryFilter.includes(
                                         categoryName
                                     )}
-                                    value={categoryName}
+                                    value={Number(categoryName)}
                                     onChange={(e) => setCategoryHandler(e)}
                                     type="checkbox"
                                 />
@@ -152,6 +156,7 @@ export const ProductListing = () => {
                         min={0}
                         max={5}
                         defaultValue={ratingRange ? ratingRange : 0}
+                        value={Number(ratingRange)}
                         type="range"
                     />
                     <div>
