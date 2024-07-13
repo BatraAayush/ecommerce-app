@@ -6,10 +6,10 @@ import { AiFillGithub } from "react-icons/ai";
 
 export const Footer = () => {
     return (
-        <div className="footer">
-            <strong>Shoes Mart</strong>
-            <div>&#169; Developed By Aayush Batra</div>
-            <div className="social-media">
+        <div className="footer" style={{justifyContent:'end'}}>
+            <strong>&copy;ShoesMart.in</strong>
+            {/* <div>&#169; Developed By Aayush Batra</div> */}
+            {/* <div className="social-media">
                 <Link
                     to={"https://www.linkedin.com/in/aayush-batra-475ab9201/"}
                     target="_blank"
@@ -27,7 +27,7 @@ export const Footer = () => {
                 <Link to={"https://github.com/BatraAayush"} target="_blank">
                     <AiFillGithub />
                 </Link>
-            </div>
+            </div> */}
         </div>
     );
 };

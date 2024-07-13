@@ -81,7 +81,7 @@ export const LoginProvider = ({ children }) => {
                 body: JSON.stringify(loginDetais),
             });
             if (res.status === 200) {
-                dispatch({ type: "setLogin" });
+                dispatch({ type: "setLogin", payload:true });
                 const { encodedToken, foundUser } = await res.json();
                 localStorage.setItem("encodedToken", encodedToken);
                 dispatch({ type: "setUserDetails", payload: foundUser });
